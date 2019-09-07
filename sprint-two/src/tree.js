@@ -19,6 +19,21 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
+  //create variable a boolean with the outcome of our function
+  var results = false;
+  // create a new function to recursively iterate thru tree
+  var search = function(newTree, target) {
+    if (newTree.value === target) {
+      results = true;
+    } else if (newTree.children) {
+      for (var i = 0; i < newTree.children.length; i++) {
+        search(newTree.children[i], target);
+      }
+    }
+  }
+  search(this, target);
+  // return boolean
+  return results;
 };
 
 
