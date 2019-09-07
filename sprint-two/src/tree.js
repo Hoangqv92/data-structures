@@ -3,14 +3,19 @@ var Tree = function(value) {
   newTree.value = value;
 
   // your code here
-  newTree.children = null;  // fix me
-
+  newTree.children = [];  // fix me
+  extend(newTree, treeMethods);
   return newTree;
 };
-
+var extend = function(to, from) {
+  for (var key in from) {
+    to[key] = from[key];
+  }
+}
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
+  this.children.push(Tree(value));
 };
 
 treeMethods.contains = function(target) {
